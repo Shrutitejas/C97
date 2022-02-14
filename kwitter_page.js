@@ -29,11 +29,18 @@ function getData() { firebase.database().ref("/"+roomname).on('value', function(
       firebase_message_id = childKey;
       message_data = childData;
       console.log(firebase_message_id);
-      console.log(message_data); 
+      console.log(message_data);
 
+      name=message_data["name"];
+      message=message_data["message"];
+      like=message_data["like"];
 
-
-      } });  }); }
+      name_tag="<h4>"+name+"</h4>";
+      msg_tag="<h4 class='message_h4'>"+message+"</h4>";
+      like_btn="<button class='btn btn-danger' id="+firebase_message_id+" onclick='updatelike(this.id)' value="+like+">";
+      spantag="<span class='gylphicon'></span>"
+      </button>";
+   } });  }); }
 getData();
 
 function logout(){
